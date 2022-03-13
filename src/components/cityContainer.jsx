@@ -1,12 +1,17 @@
 import React from "react";
 
 const CityContainer = (props) => {
-  const { cityInfo } = props;
-  console.log(cityInfo);
+  const { cityInfo, onClick } = props;
+  if (!cityInfo || cityInfo.length === 0) return null;
+
   return (
     <div className="list-group">
       {cityInfo.map((city) => (
-        <a className="list-group-item list-group-item-action">
+        <a
+          key={Math.random()}
+          className="list-group-item list-group-item-action"
+          onClick={() => onClick(city.Key)}
+        >
           {city.EnglishName + "," + city.LocalizedName + "," + city.CountryID}
         </a>
       ))}
