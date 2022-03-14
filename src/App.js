@@ -16,15 +16,12 @@ class App extends Component {
   handleCitySubmit = async (e) => {
     e.preventDefault();
     const cityInfo = await getCity(e.target.city.value);
-    const data = [];
-    cityInfo.data.map((city) => {
-      data.push({
+    const data = cityInfo.data.map((city) => ({
         EnglishName: city.EnglishName,
         LocalizedName: city.AdministrativeArea.LocalizedName,
         CountryID: city.AdministrativeArea.CountryID,
         Key: city.Key,
-      });
-    });
+      }));
     this.setState({ city: data });
     
   };
